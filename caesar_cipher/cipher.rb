@@ -34,7 +34,7 @@ def caesar_shift(string, key)
     end
 end
 
-puts "What would is your plaintext?".red
+puts "What is your plaintext?".red
 string = gets.chomp
 
 puts "What is your key?".blue
