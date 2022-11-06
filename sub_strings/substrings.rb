@@ -24,10 +24,17 @@ require "pry-byebug"
 
 
 def substrings(string, dictionary)
+  #Using result Hash.new(0) instead of result = {}
+  #makes the default values 0 instead of nil 
   result = Hash.new(0)
   lowered_text = string.downcase
   
   dictionary.each do |word|
+    #scan will search for the set word from dictionary, and then 
+    #create an array of instances of that word.
+    #using #length after #scan gives us the amount of occurences
+    #after that we set result[word] (the key) = to the amount of matches 
+    # UNLESS there were not any matches
     matches = lowered_text.scan(word).length
     result[word] = matches unless matches == 0
   end
