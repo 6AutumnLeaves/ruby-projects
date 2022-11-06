@@ -1,3 +1,4 @@
+require "pry-byebug"
 #Goal:
 #Implement a method #substrings, that takes a word as the first argument
 #and then an array of valid substrings (your dictionary) as the
@@ -21,9 +22,18 @@
 #
 #3. Return that hash 
 
-dictionary = %w(below, hello, chicken, something, rotten, chimichanga, taco, cat, boy, girl, chicken, steak, I, do,not, agree, pompous, tenacity, perspicacity, idefatigability)
 
-def substrings(word, dictionary)
-  words = Hash.new
+def substrings(string, dictionary)
+  result = Hash.new(0)
+  lowered_text = string.downcase
+  
+  dictionary.each do |word|
+    matches = lowered_text.scan(word).length
+    result[word] = matches unless matches == 0
+  end
+  puts result
+  return result
 end
 
+dictionary = %w(below hello chicken something rotten chimichanga taco cat boy girl chicken steak I do not agree pompous tenacity perspicacity)
+substrings("Below the rotten cat man, lies the steak my stomach did not agree with.", dictionary)
